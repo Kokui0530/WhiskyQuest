@@ -20,9 +20,33 @@ repositories {
 }
 
 dependencies {
+	//Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//Apache Commons
+	implementation 'org.apache.commons:commons-lang3:3.18.0'
+	//Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//OpenAPI Generator
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+	//My batis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
+
+	//Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// My SQLドライバ
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	//SpringBoot test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//My batis Test
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.5'
+
+	//H2(InMemoryDB)
+	testImplementation 'com.h2database:h2:2.3.232'
+
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
