@@ -3,9 +3,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whisukiquest.whiskyquest_api.repository.WhiskyRepository">
 
-<!--UserIdに紐づくWhisky情報検索-->
-  <select id="searchWhisky" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
+
+  <!--User情報検索-->
+  <select id="searchUserById" resultType="com.whisukiquest.whiskyquest_api.data.Users">
+    SELECT * FROM users WHERE id= #{Id}
+  </select>
+
+<!--Whisky情報検索-->
+  <select id="searchWhiskyList" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
     SELECT * FROM whisky WHERE user_id= #{userId}
+  </select>
+
+  <!--Rating情報検索-->
+  <select id="searchRatingList" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
+    SELECT * FROM rating WHERE user_id= #{userId}
+  </select>
+
+  <!--Whisky詳細検索、whiskyIdで検索-->
+  <select id="searchWhisky" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
+    SELECT * FROM whisky WHERE id= #{Id}
+  </select>
+
+  <!--Rating一覧検索、whiskyIdで検索-->
+  <select id="searchRatingByWhiskyId" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
+    SELECT * FROM rating WHERE whisky_id= #{whiskyId}
   </select>
 
 </mapper>
