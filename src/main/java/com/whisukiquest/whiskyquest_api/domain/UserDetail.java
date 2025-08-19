@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class UserDetail {
 
-  //ユーザー詳細
+  //1ユーザー：多ウイスキー情報：多評価
   // ユーザーが登録している、ウイスキー情報と評価詳細を表示
   private Users users;
   private List<Whisky> whiskyList;

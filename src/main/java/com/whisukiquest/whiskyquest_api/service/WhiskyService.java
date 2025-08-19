@@ -14,31 +14,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class WhiskyService {
 
-private final WhiskyRepository repository;
-private final WhiskyConverter converter;
+  private final WhiskyRepository repository;
+  private final WhiskyConverter converter;
 
-@Autowired
-public WhiskyService(WhiskyRepository repository, WhiskyConverter converter){
-this.repository = repository;
-this.converter = converter;
-}
+  @Autowired
+  public WhiskyService(WhiskyRepository repository, WhiskyConverter converter) {
+    this.repository = repository;
+    this.converter = converter;
+  }
 
-//ユーザー詳細、登録したウイスキー詳細、評価詳細が取れてくる
-public UserDetail searchUserDetail(int userId) {
-List<Whisky> whiskyList = repository.searchWhiskyList(userId);
-List<Rating> ratingList = repository.searchRatingList(userId);
-Users users = repository.searchUserById(userId);
-UserDetail userDetail = converter.converterUserDetail(users,whiskyList,ratingList);
+  //ユーザー詳細、登録したウイスキー詳細、評価詳細が取れてくる
+  public UserDetail searchUserDetail(int userId) {
+    List<Whisky> whiskyList = repository.searchWhiskyList(userId);
+    List<Rating> ratingList = repository.searchRatingList(userId);
+    Users users = repository.searchUserById(userId);
+    UserDetail userDetail = converter.converterUserDetail(users, whiskyList, ratingList);
 
-return userDetail;
-}
+    return userDetail;
+  }
 
-public WhiskyDetail searchWhiskyDetail(int whiskyId){
-  Whisky whisky = repository.searchWhisky(whiskyId);
-  List<Rating> ratingList = repository.searchRatingByWhiskyId(whiskyId);
-  WhiskyDetail whiskyDetail = converter.converterWhiskyDetail(whisky,ratingList);
-  return whiskyDetail;
-}
+  //ウイスキー詳細、そのウイスキーに対しての評価一覧が取れてくる
+  public WhiskyDetail searchWhiskyDetail(int whiskyId) {
+    Whisky whisky = repository.searchWhisky(whiskyId);
+    List<Rating> ratingList = repository.searchRatingByWhiskyId(whiskyId);
+    WhiskyDetail whiskyDetail = converter.converterWhiskyDetail(whisky, ratingList);
+    return whiskyDetail;
+  }
 
 
 }

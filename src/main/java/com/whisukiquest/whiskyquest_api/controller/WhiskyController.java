@@ -11,24 +11,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WhiskyController {
 
-private final WhiskyService service;
+  private final WhiskyService service;
 
-@Autowired
-public WhiskyController(WhiskyService service){
-  this.service = service;
-}
-
-//ユーザー詳細、登録したウイスキー詳細、評価詳細が取れてくる
-@GetMapping("/user/{userId}")
-  public UserDetail getUserList(
-      @PathVariable  int userId){
-   return service.searchUserDetail(userId);
+  @Autowired
+  public WhiskyController(WhiskyService service) {
+    this.service = service;
   }
 
-@GetMapping("/whisky/{whiskyId}")
- public WhiskyDetail getWhiskyList(
-  @PathVariable int whiskyId){
-  return service.searchWhiskyDetail(whiskyId);
+  //ユーザー詳細、登録したウイスキー詳細、評価詳細が取れてくる
+  @GetMapping("/user/{userId}")
+  public UserDetail getUserList(
+      @PathVariable int userId) {
+    return service.searchUserDetail(userId);
+  }
+
+
+  //ウイスキー詳細と、そのウイスキーに対しての評価一覧が取れてくる
+  @GetMapping("/whisky/{whiskyId}")
+  public WhiskyDetail getWhiskyList(
+      @PathVariable int whiskyId) {
+    return service.searchWhiskyDetail(whiskyId);
   }
 
 }

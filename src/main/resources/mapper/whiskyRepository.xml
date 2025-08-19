@@ -9,7 +9,7 @@
     SELECT * FROM users WHERE id= #{Id}
   </select>
 
-<!--Whisky情報検索-->
+  <!--Whisky情報検索-->
   <select id="searchWhiskyList" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
     SELECT * FROM whisky WHERE user_id= #{userId}
   </select>

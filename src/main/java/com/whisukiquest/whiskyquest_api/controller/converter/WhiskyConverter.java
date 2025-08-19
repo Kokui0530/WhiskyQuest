@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WhiskyConverter {
 
+  //1ユーザー：多ウイスキー：多評価　紐づけ
   public UserDetail converterUserDetail(
       Users users, List<Whisky> whiskyList, List<Rating> ratingList) {
     List<Whisky> converterWhiskyList = new ArrayList<>();
@@ -34,10 +35,10 @@ public class WhiskyConverter {
     return userDetail;
   }
 
+  //1ウイスキー：多評価　紐づけ
   public WhiskyDetail converterWhiskyDetail (
       Whisky whisky, List<Rating> ratingList){
     WhiskyDetail whiskyDetail = new WhiskyDetail();
-    whiskyDetail.setWhisky(whisky);
     List<Rating> converterRatingList = new ArrayList<>();
     for (Rating rating : ratingList){
       if (rating.getWhiskyId() == whisky.getId()){

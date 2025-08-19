@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class WhiskyDetail {
 
-  //ウイスキー詳細
+  //1ウイスキー情報：多評価
   //ウイスキー詳細と評価を表示
   private Whisky whisky;
   private List<Rating> rating;
