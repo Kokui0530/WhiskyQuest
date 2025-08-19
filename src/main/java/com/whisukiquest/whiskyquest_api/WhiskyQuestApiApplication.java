@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WhiskyquestApiApplication {
+public class WhiskyQuestApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WhiskyquestApiApplication.class, args);
+		SpringApplication.run(WhiskyQuestApiApplication.class, args);
 	}
 
 }
