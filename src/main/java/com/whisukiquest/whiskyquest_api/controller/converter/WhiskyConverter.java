@@ -46,7 +46,7 @@ public class WhiskyConverter {
       }
     }
     whiskyDetail.setWhisky(whisky);
-    whiskyDetail.setRating(converterRatingList);
+    whiskyDetail.setRatingList(converterRatingList);
 
   return whiskyDetail;
   }
