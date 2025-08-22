@@ -29,5 +29,22 @@
     SELECT * FROM rating WHERE whisky_id= #{whiskyId}
   </select>
 
+  <!--ユーザー情報の新規登録-->
+  <insert id="registerUser" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO Users(user_name,mail,password)
+    VALUES(#{userName} , #{mail} , #{password})
+  </insert>
+
+  <!--ウイスキー情報の新規登録-->
+  <insert id="registerWhisky" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO Whisky(user_id , name , taste , drinking_style , price , memo , is_deleted)
+    VALUES(#{userId} , #{name} , #{taste} , #{drinkingStyle} , #{price} , #{memo} , false)
+  </insert>
+
+  <!--評価情報の新規登録-->
+  <insert id="registerRating" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO Rating(user_id , whisky_id , rating)
+    VALUES(#{userId} , #{whiskyId} , #{rating})
+  </insert>
 </mapper>
 

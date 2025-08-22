@@ -24,4 +24,13 @@ public interface WhiskyRepository {
   //rating検索 whiskyIdで検索
   List<Rating> searchRatingByWhiskyId(int whiskyId);
 
+  //ユーザー情報の新規登録
+  void registerUser(Users users);
+
+  //ウイスキー情報の新規登録
+  void registerWhisky(Whisky whisky);
+
+  //評価情報の新規登録
+  void registerRating(Rating rating);
+
 }
