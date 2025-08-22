@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface WhiskyRepository {
 
   //user検索 userId検索
-  Users searchUserById(int Id);
+  Users searchUserById(int id);
 
   //Whisky情報一覧検索
   List<Whisky> searchWhiskyList(int userId);
