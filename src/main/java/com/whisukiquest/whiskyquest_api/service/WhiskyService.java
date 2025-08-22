@@ -6,10 +6,12 @@ import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
 import com.whisukiquest.whiskyquest_api.repository.WhiskyRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class WhiskyService {
@@ -42,4 +44,20 @@ public class WhiskyService {
   }
 
 
+  @Transactional //ユーザー情報の新規登録
+  public Users registerUsers(Users users) {
+    repository.registerUser(users);
+    return users;
+  }
+
+  @Transactional //ウイスキー詳細と評価の新規登録
+  public WhiskyInfo registerWhiskyInfo(WhiskyInfo whiskyInfo) {
+    repository.registerWhisky(whiskyInfo.getWhisky());
+
+    //whiskyIDは自動採番の為、Whiskyを登録→whiskyIDが自動採番→自動採番されたwhiskyIdをratingのwhiskyIdにセット
+    int whiskyId = whiskyInfo.getWhisky().getId();
+    whiskyInfo.getRating().setWhiskyId(whiskyId);
+    repository.registerRating(whiskyInfo.getRating());
+    return whiskyInfo;
+  }
 }

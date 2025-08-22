@@ -1,11 +1,17 @@
 package com.whisukiquest.whiskyquest_api.controller;
 
+import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
 import com.whisukiquest.whiskyquest_api.service.WhiskyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,5 +39,18 @@ public class WhiskyController {
     return service.searchWhiskyDetail(whiskyId);
   }
 
+  //ユーザー情報新規登録
+  @PostMapping("/registerUser")
+  public ResponseEntity<Users> registerUser(@RequestBody Users users) {
+    Users responseUser = service.registerUsers(users);
+    return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+  }
+
+  //ウイスキー情報と評価情報の新規登録
+  @PostMapping("/registerWhisky")
+  public ResponseEntity<WhiskyInfo> registerWhiskyInfo(@RequestBody WhiskyInfo whiskyInfo) {
+    WhiskyInfo responseWhiskyInfo = service.registerWhiskyInfo(whiskyInfo);
+    return ResponseEntity.status(HttpStatus.CREATED).body(responseWhiskyInfo);
+  }
 }
 
