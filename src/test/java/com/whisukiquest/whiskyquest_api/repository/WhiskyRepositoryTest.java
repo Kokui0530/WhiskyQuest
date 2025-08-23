@@ -52,4 +52,48 @@ public class WhiskyRepositoryTest {
     assertThat(actual.size()).isEqualTo(1);
   }
 
+  @Test  //registerUser
+  void ユーザー情報の新規登録が出来る事() {
+    Users user = new Users();
+    user.setUserName("高橋　杏里");
+    user.setMail("anri@gmail.com");
+    user.setPassword("qwe1");
+
+    sut.registerUser(user);
+    Users actual = sut.searchUserById(user.getId());
+
+    assertThat(actual).isEqualTo(user);
+
+  }
+
+  @Test   //registerWhisky
+  void ウイスキー情報の新規登録が出来る事() {
+    Whisky whisky = new Whisky();
+    whisky.setName("メーカーズマーク");
+    whisky.setTaste("甘い");
+    whisky.setDrinkingStyle("ハイボール");
+    whisky.setPrice(3000);
+    whisky.setMemo("ボトルもかわいい");
+
+    sut.registerWhisky(whisky);
+    Whisky actual = sut.searchWhisky(whisky.getId());
+
+    assertThat(actual).isEqualTo(whisky);
+  }
+
+  @Test   //registerRating
+  void 評価情報の新規登録が出来る事() {
+    Rating rating = new Rating();
+    rating.setRating(5);
+    rating.setUserId(2);
+    rating.setWhiskyId(2);
+
+    sut.registerRating(rating);
+    List<Rating> actual = sut.searchRatingList(rating.getUserId());
+    //rating.getUserId()としているので、rating全件ではなく上記でsetしてるuserId(2)のratingを
+    //取得してactualに代入してる
+    assertThat(actual.size()).isEqualTo(3);
+    //なのでサイズで「全件＋今追加した分」のisEqualTo(11)じゃなくて、isEqualTo(3)になる
+
+  }
 }
