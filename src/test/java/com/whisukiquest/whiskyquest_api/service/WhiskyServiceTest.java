@@ -9,6 +9,7 @@ import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
 import com.whisukiquest.whiskyquest_api.repository.WhiskyRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,5 +86,33 @@ public class WhiskyServiceTest {
     verify(converter, times(1)).converterWhiskyDetail(whisky, ratingList);
 
     assertEquals(expected, actual);
+  }
+
+  @Test //registerUsers
+  void ユーザーの新規登録＿適切にリポジトリが呼び出せてること(){
+    int id = 999;
+    Users users = new Users();
+    users.setId(id);
+    sut.registerUsers(users);
+
+   verify(repository,times(1)).registerUser(users);
+  }
+
+  @Test //registerWhiskyInfo
+  void ウイスキー情報と評価情報の登録＿適切にリポジトリが呼び出せている事(){
+    int id = 999;
+    Whisky whisky = new Whisky();
+    whisky.setId(id);
+    Rating rating = new Rating();
+    rating.setId(id);
+    WhiskyInfo whiskyInfo = new WhiskyInfo();
+    whiskyInfo.setWhisky(whisky);
+    whiskyInfo.setRating(rating);
+
+    sut.registerWhiskyInfo(whiskyInfo);
+
+    verify(repository,times(1)).registerWhisky(whisky);
+    verify(repository,times(1)).registerRating(rating);
+
   }
 }
