@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,5 +53,22 @@ public class WhiskyController {
     WhiskyInfo responseWhiskyInfo = service.registerWhiskyInfo(whiskyInfo);
     return ResponseEntity.status(HttpStatus.CREATED).body(responseWhiskyInfo);
   }
+
+  //ユーザー情報の更新
+@PutMapping("/updateUser/{userId}")
+  public ResponseEntity<Users> updateUser(@RequestBody Users users){
+    Users responseUser = service.updateUser(users);
+    return ResponseEntity.ok(responseUser);
+}
+
+//ウイスキー情報の更新
+  @PutMapping("/updateWhiskyInfo/{WhiskyId}/{RatingId}")
+  public ResponseEntity<WhiskyInfo> updateWhisky(
+      @PathVariable int WhiskyId, @PathVariable int RatingId,
+      @RequestBody WhiskyInfo whiskyInfo){
+    WhiskyInfo responseWhiskyInfo = service.updateWhiskyInfo(whiskyInfo);
+    return ResponseEntity.ok(responseWhiskyInfo);
+  }
+
 }
 

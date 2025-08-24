@@ -75,13 +75,13 @@ public class WhiskyServiceTest {
     expected.setWhisky(whisky);
     expected.setRatingList(ratingList);
 
-    Mockito.when(repository.searchWhisky(whiskyId)).thenReturn(whisky);
+    Mockito.when(repository.searchWhiskyById(whiskyId)).thenReturn(whisky);
     Mockito.when(repository.searchRatingByWhiskyId(whiskyId)).thenReturn(ratingList);
     Mockito.when(converter.converterWhiskyDetail(whisky, ratingList)).thenReturn(expected);
 
     WhiskyDetail actual = sut.searchWhiskyDetail(whiskyId);
 
-    verify(repository, times(1)).searchWhisky(whiskyId);
+    verify(repository, times(1)).searchWhiskyById(whiskyId);
     verify(repository, times(1)).searchRatingByWhiskyId(whiskyId);
     verify(converter, times(1)).converterWhiskyDetail(whisky, ratingList);
 
