@@ -41,7 +41,7 @@ public class WhiskyRepositoryTest {
   @Test
     //searchWhisky
   void ウイスキーIDでウイスキー情報が検索出来る事() {
-    Whisky actual = sut.searchWhisky(1);
+    Whisky actual = sut.searchWhiskyById(1);
     assertThat(actual.getId()).isEqualTo(1);
   }
 
@@ -76,7 +76,7 @@ public class WhiskyRepositoryTest {
     whisky.setMemo("ボトルもかわいい");
 
     sut.registerWhisky(whisky);
-    Whisky actual = sut.searchWhisky(whisky.getId());
+    Whisky actual = sut.searchWhiskyById(whisky.getId());
 
     assertThat(actual).isEqualTo(whisky);
   }

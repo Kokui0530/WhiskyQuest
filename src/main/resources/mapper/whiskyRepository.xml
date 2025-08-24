@@ -14,19 +14,24 @@
     SELECT * FROM whisky WHERE user_id= #{userId}
   </select>
 
+  <!--Whisky詳細検索、whiskyIdで検索-->
+  <select id="searchWhiskyById" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
+    SELECT * FROM whisky WHERE id= #{Id}
+  </select>
+
   <!--Rating情報検索-->
   <select id="searchRatingList" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
     SELECT * FROM rating WHERE user_id= #{userId}
   </select>
 
-  <!--Whisky詳細検索、whiskyIdで検索-->
-  <select id="searchWhisky" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
-    SELECT * FROM whisky WHERE id= #{Id}
-  </select>
-
   <!--Rating一覧検索、whiskyIdで検索-->
   <select id="searchRatingByWhiskyId" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
     SELECT * FROM rating WHERE whisky_id= #{whiskyId}
+  </select>
+
+  <!--Rating１件の検索　ratingIdで検索-->
+  <select id="searchRatingById" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
+    SELECT * FROM rating WHERE id = #{ratingId}
   </select>
 
   <!--ユーザー情報の新規登録-->
@@ -46,5 +51,24 @@
     INSERT INTO Rating(user_id , whisky_id , rating)
     VALUES(#{userId} , #{whiskyId} , #{rating})
   </insert>
+
+  <!--ユーザー情報の更新-->
+  <update id="updateUser">
+    UPDATE Users SET user_name = #{userName} , mail = #{mail} , password = #{password}
+    WHERE id = #{id}
+  </update>
+
+  <!--ウイスキー情報の更新-->
+  <update id="updateWhisky">
+    UPDATE whisky SET user_id = #{userId} , name = #{name} , taste = #{taste} ,
+    drinking_style = #{drinkingStyle} , price = #{price} , memo = #{memo} , is_deleted = #{isDeleted}
+    WHERE id = #{id}
+  </update>
+
+  <!--評価情報の更新-->
+  <update id="updateRating">
+    UPDATE rating SET user_id = #{userId} , whisky_id = #{whiskyId} , rating = #{rating}
+    WHERE id = #{id}
+  </update>
 </mapper>
 

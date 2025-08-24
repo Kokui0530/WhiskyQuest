@@ -15,14 +15,17 @@ public interface WhiskyRepository {
   //Whisky情報一覧検索
   List<Whisky> searchWhiskyList(int userId);
 
+  //Whisky情報検索　whiskyIdで検索
+  Whisky searchWhiskyById(int whiskyId);
+
   //Rating情報一覧検索
   List<Rating> searchRatingList(int userId);
 
-  //Whisky情報検索　whiskyIdで検索
-  Whisky searchWhisky(int whiskyId);
-
-  //rating検索 whiskyIdで検索
+  //Rating検索 whiskyIdで検索
   List<Rating> searchRatingByWhiskyId(int whiskyId);
+
+  //Rating情報検索　1件
+  Rating searchRatingById(int ratingId);
 
   //ユーザー情報の新規登録
   void registerUser(Users users);
@@ -32,5 +35,15 @@ public interface WhiskyRepository {
 
   //評価情報の新規登録
   void registerRating(Rating rating);
+
+  //ユーザー情報の更新
+  void updateUser(Users users);
+
+  //ウイスキー情報の更新
+  void updateWhisky(Whisky whisky);
+
+  //評価情報の更新
+  void updateRating(Rating rating);
+
 
 }

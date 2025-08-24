@@ -37,7 +37,7 @@ public class WhiskyService {
 
   //ウイスキー詳細、そのウイスキーに対しての評価一覧が取れてくる
   public WhiskyDetail searchWhiskyDetail(int whiskyId) {
-    Whisky whisky = repository.searchWhisky(whiskyId);
+    Whisky whisky = repository.searchWhiskyById(whiskyId);
     List<Rating> ratingList = repository.searchRatingByWhiskyId(whiskyId);
     WhiskyDetail whiskyDetail = converter.converterWhiskyDetail(whisky, ratingList);
     return whiskyDetail;
@@ -59,5 +59,26 @@ public class WhiskyService {
     whiskyInfo.getRating().setWhiskyId(whiskyId);
     repository.registerRating(whiskyInfo.getRating());
     return whiskyInfo;
+  }
+
+  //ユーザー情報更新
+  public Users updateUser(Users users) {
+    repository.updateUser(users);
+    return repository.searchUserById(users.getId());
+  }
+
+
+  //ウイスキー情報と評価情報の更新
+  @Transactional
+  public WhiskyInfo updateWhiskyInfo(WhiskyInfo whiskyInfo) {
+    repository.updateWhisky(whiskyInfo.getWhisky());
+    repository.updateRating(whiskyInfo.getRating());
+    Whisky whisky = repository.searchWhiskyById(whiskyInfo.getWhisky().getId());
+    Rating rating = repository.searchRatingById(whiskyInfo.getRating().getId());
+
+    WhiskyInfo updateInfo = new WhiskyInfo();
+    updateInfo.setWhisky(whisky);
+    updateInfo.setRating(rating);
+    return updateInfo;
   }
 }
