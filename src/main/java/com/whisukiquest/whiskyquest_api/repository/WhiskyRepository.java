@@ -44,5 +44,12 @@ public interface WhiskyRepository {
   //評価情報の更新
   void updateRating(Rating rating);
 
+  //ユーザー情報の論理削除
+  void deleteUser(Users users);
 
+  //ウイスキー情報の論理削除
+  void deleteWhisky(Whisky whisky);
+
+  //評価情報の論理削除
+  void deleteRating(Rating rating);
 }

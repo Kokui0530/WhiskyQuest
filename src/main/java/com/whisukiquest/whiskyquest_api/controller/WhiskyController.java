@@ -71,5 +71,30 @@ public class WhiskyController {
     return ResponseEntity.ok(responseWhiskyInfo);
   }
 
+  //ユーザー情報の論理削除
+  @PutMapping("/deleteUser/{userId}")
+  public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
+    service.deleteUser(userId);
+    return ResponseEntity.ok().build();
+  }
+
+  //ウイスキー情報の論理削除
+  @PutMapping("/deleteWhisky/{userId}")
+  public ResponseEntity<Void> deleteWhisky(@PathVariable int userId) {
+    service.deleteWhisky(userId);
+    return ResponseEntity.ok().build();
+  }
+
+  //評価情報の論理削除
+  @PutMapping("/deleteRating/{userId}")
+  public ResponseEntity<Void> deleteRating(@PathVariable int userId) {
+    service.deleteRating(userId);
+    return ResponseEntity.ok().build();
+  }
+
+
 }
+
+
+
 

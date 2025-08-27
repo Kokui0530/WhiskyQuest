@@ -81,4 +81,25 @@ public class WhiskyService {
     updateInfo.setRating(rating);
     return updateInfo;
   }
+
+  //ユーザー情報の論理削除
+  public void deleteUser(int id){
+    Users user = new Users();
+    user.setId(id);
+    repository.deleteUser(user);
+  }
+
+  //ウイスキー情報の論理削除
+  public void deleteWhisky(int userId){
+    Whisky whisky = new Whisky();
+    whisky.setUserId(userId);
+    repository.deleteWhisky(whisky);
+  }
+
+  //評価情報の論理削除
+  public void deleteRating(int userId){
+    Rating rating = new Rating();
+    rating.setUserId(userId);
+    repository.deleteRating(rating);
+  }
 }

@@ -6,32 +6,32 @@
 
   <!--User情報検索-->
   <select id="searchUserById" resultType="com.whisukiquest.whiskyquest_api.data.Users">
-    SELECT * FROM users WHERE id= #{Id}
+    SELECT * FROM users WHERE id= #{Id} AND is_deleted = FALSE
   </select>
 
   <!--Whisky情報検索-->
   <select id="searchWhiskyList" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
-    SELECT * FROM whisky WHERE user_id= #{userId}
+    SELECT * FROM whisky WHERE user_id= #{userId} AND is_deleted = FALSE
   </select>
 
   <!--Whisky詳細検索、whiskyIdで検索-->
   <select id="searchWhiskyById" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
-    SELECT * FROM whisky WHERE id= #{Id}
+    SELECT * FROM whisky WHERE id= #{Id} AND is_deleted = FALSE
   </select>
 
   <!--Rating情報検索-->
   <select id="searchRatingList" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
-    SELECT * FROM rating WHERE user_id= #{userId}
+    SELECT * FROM rating WHERE user_id= #{userId} AND is_deleted = FALSE
   </select>
 
   <!--Rating一覧検索、whiskyIdで検索-->
   <select id="searchRatingByWhiskyId" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
-    SELECT * FROM rating WHERE whisky_id= #{whiskyId}
+    SELECT * FROM rating WHERE whisky_id= #{whiskyId} AND is_deleted = FALSE
   </select>
 
   <!--Rating１件の検索　ratingIdで検索-->
   <select id="searchRatingById" resultType="com.whisukiquest.whiskyquest_api.data.Rating">
-    SELECT * FROM rating WHERE id = #{ratingId}
+    SELECT * FROM rating WHERE id = #{ratingId} AND is_deleted = FALSE
   </select>
 
   <!--ユーザー情報の新規登録-->
@@ -70,5 +70,22 @@
     UPDATE rating SET user_id = #{userId} , whisky_id = #{whiskyId} , rating = #{rating}
     WHERE id = #{id}
   </update>
+
+  <!--ユーザー情報の論理削除-->
+  <update id="deleteUser">
+    UPDATE users SET is_deleted = TRUE WHERE id = #{id}
+  </update>
+
+  <!--ウイスキー情報の論理削除-->
+  <update id="deleteWhisky">
+    UPDATE whisky SET is_deleted = TRUE WHERE user_id = #{userId}
+  </update>
+
+  <!--評価情報の論理削除-->
+  <update id="deleteRating">
+    UPDATE rating SET is_deleted = TRUE WHERE user_id = #{userId}
+  </update>
+
+
 </mapper>
 
