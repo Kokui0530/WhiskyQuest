@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 @ExtendWith(MockitoExtension.class)
 public class WhiskyServiceTest {
@@ -114,5 +115,41 @@ public class WhiskyServiceTest {
     verify(repository,times(1)).registerWhisky(whisky);
     verify(repository,times(1)).registerRating(rating);
 
+  }
+
+  @Test //updateUser
+  void ユーザー情報の更新＿適切にリポジトリが呼び出されている事(){
+    Users users = new Users();
+    users.setId(1);
+    users.setUserName("山田　太郎");
+    sut.updateUser(users);
+
+    Mockito.when(repository.searchUserById(1)).thenReturn(users);
+    Users actual = repository.searchUserById(1);
+
+    verify(repository, times(1)).updateUser(users);
+    assertEquals(users.getId(), actual.getId());
+    assertEquals(users.getUserName(), actual.getUserName());
+  }
+
+  @Transactional
+  @Test //updateWhiskyInfo
+  void ウイスキー情報と評価情報の更新_リポジトリが適切に呼び出されている事() {
+    Whisky whisky = new Whisky();
+    whisky.setId(1);
+    Rating rating = new Rating();
+    rating.setId(1);
+    WhiskyInfo whiskyInfo = new WhiskyInfo();
+    whiskyInfo.setWhisky(whisky);
+    whiskyInfo.setRating(rating);
+    Mockito.when(repository.searchWhiskyById(1)).thenReturn(whisky);
+    Mockito.when(repository.searchRatingById(1)).thenReturn(rating);
+
+    WhiskyInfo actual = sut.updateWhiskyInfo(whiskyInfo);
+
+    verify(repository, times(1)).updateWhisky(whisky);
+    verify(repository, times(1)).updateRating(rating);
+    assertEquals(actual.getWhisky().getId(), whisky.getId());
+    assertEquals(actual.getRating().getId(), rating.getId());
   }
 }
