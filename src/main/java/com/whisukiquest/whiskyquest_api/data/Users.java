@@ -13,5 +13,6 @@ public class Users {
   private String userName;
   private String mail;
   private String password;
+  private boolean isDeleted;
 
 }

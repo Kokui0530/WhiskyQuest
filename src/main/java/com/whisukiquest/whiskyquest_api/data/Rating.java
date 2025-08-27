@@ -15,5 +15,5 @@ public class Rating {
   private int whiskyId;
   private int rating;
   private LocalDateTime ratingAt;
-
+  private boolean isDeleted;
 }
