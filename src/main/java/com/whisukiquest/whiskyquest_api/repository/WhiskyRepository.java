@@ -41,7 +41,6 @@ public interface WhiskyRepository {
 
   //ウイスキー情報の更新
   void updateWhisky(Whisky whisky);
-
   //評価情報の更新
   void updateRating(Rating rating);
 

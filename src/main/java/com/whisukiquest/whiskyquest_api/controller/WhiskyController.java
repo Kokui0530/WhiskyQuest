@@ -56,7 +56,8 @@ public class WhiskyController {
 
   //ユーザー情報の更新
 @PutMapping("/updateUser/{userId}")
-  public ResponseEntity<Users> updateUser(@RequestBody Users users){
+  public ResponseEntity<Users> updateUser(@PathVariable int userId ,
+    @RequestBody Users users){
     Users responseUser = service.updateUser(users);
     return ResponseEntity.ok(responseUser);
 }

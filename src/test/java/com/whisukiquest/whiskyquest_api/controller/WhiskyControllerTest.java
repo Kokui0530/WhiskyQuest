@@ -5,6 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -151,5 +152,74 @@ public class WhiskyControllerTest {
     verify(service, times(1)).registerWhiskyInfo(any());
   }
 
+  @Test //@PutMapping("/updateUser/{userId}")
+  void ユーザー情報の更新ができる事() throws Exception {
+    int userId = 1;
+    Users users = new Users();
+    users.setId(userId);
+    users.setUserName("谷口　雪");
 
+    Mockito.when(service.updateUser(any(Users.class))).thenReturn(users);
+
+    mockMvc.perform(put("/updateUser/{userId}", userId)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(
+                """
+                      {
+                          "userName": "谷口　雪",
+                          "mail": "aya@example.com",
+                          "password": "asd1"
+                      }
+                    """
+            ))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.userName").value("谷口　雪"));
+    verify(service, times(1)).updateUser(any(Users.class));
+  }
+
+  @Test //@PutMapping("/updateWhiskyInfo/{WhiskyId}/{RatingId}")
+  void ウイスキー情報と評価情報の更新() throws Exception {
+    int whiskyId = 1;
+    int ratingId = 1;
+
+    Whisky whisky = new Whisky();
+    whisky.setId(whiskyId);
+    whisky.setName("山崎12年");
+
+    Rating rating = new Rating();
+    rating.setId(ratingId);
+    rating.setRating(4);
+
+    WhiskyInfo whiskyInfo = new WhiskyInfo();
+    whiskyInfo.setWhisky(whisky);
+    whiskyInfo.setRating(rating);
+    Mockito.when(service.updateWhiskyInfo(any(WhiskyInfo.class))).thenReturn(whiskyInfo);
+
+    mockMvc.perform(put("/updateWhiskyInfo/{WhiskyId}/{RatingId}", whiskyId, ratingId)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(
+                """
+                    {
+                        "whisky": {
+                            "userId":1,
+                            "name": "メーカーズマーク",
+                            "taste": "甘い",
+                            "drinkingStyle": "ハイボール",
+                            "price": 3000,
+                            "memo": "ボトルもかわいい",
+                            "deleted": false
+                        },
+                        "rating": {
+                            "userId": 1,
+                            "whiskyId" :1,
+                            "rating": 5
+                        }
+                    }
+                    """
+            ))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.whisky.name").value("山崎12年"));
+    verify(service, times(1)).updateWhiskyInfo(any(WhiskyInfo.class));
+
+  }
 }
