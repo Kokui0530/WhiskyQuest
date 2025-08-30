@@ -3,6 +3,7 @@ package com.whisukiquest.whiskyquest_api.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
 import com.whisukiquest.whiskyquest_api.controller.converter.WhiskyConverter;
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
@@ -151,5 +152,36 @@ public class WhiskyServiceTest {
     verify(repository, times(1)).updateRating(rating);
     assertEquals(actual.getWhisky().getId(), whisky.getId());
     assertEquals(actual.getRating().getId(), rating.getId());
+  }
+
+  @Test //deleteUser
+  void ユーザー情報の倫理削除が出来る事＿適切にリポジトリが呼び出せている事() {
+    int id = 999;
+    Users user = new Users();
+    user.setId(id);
+    sut.deleteUser(id);
+
+    verify(repository, times(1)).deleteUser(user);
+
+  }
+
+  @Test //deleteWhisky
+  void ウイスキー情報の論理削除が出来る事＿適切にリポジトリが呼び出されている事() {
+    int userId = 999;
+    Whisky whisky = new Whisky();
+    whisky.setUserId(userId);
+    sut.deleteWhisky(userId);
+
+    verify(repository, times(1)).deleteWhisky(whisky);
+  }
+
+  @Test //deleteRating
+  void 評価情報の論理削除が出来る事＿適切にリポジトリが呼び出せている事(){
+    int useId = 999;
+    Rating rating = new Rating();
+    rating.setUserId(useId);
+    sut.deleteRating(useId);
+
+    verify(repository, times(1)).deleteRating(rating);
   }
 }

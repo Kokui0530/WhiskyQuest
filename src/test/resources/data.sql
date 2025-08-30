@@ -1,9 +1,9 @@
-INSERT INTO users (user_name, mail, password) VALUES
-('山田 太郎', 'taro@example.com', 'pass1234'),
-('鈴木 花子', 'hanako@example.com', 'secure5678'),
-('田中 健二', 'kenji@example.com', 'mypassword'),
-('小林 由紀', 'yuki@example.com', 'abc12345'),
-('伊藤 聡', 'satoshi@example.com', 'qwerty987');
+INSERT INTO users (user_name, mail, password, is_deleted) VALUES
+('山田 太郎', 'taro@example.com', 'pass1234', false),
+('鈴木 花子', 'hanako@example.com', 'secure5678', false),
+('田中 健二', 'kenji@example.com', 'mypassword', false),
+('小林 由紀', 'yuki@example.com', 'abc12345', false),
+('伊藤 聡', 'satoshi@example.com', 'qwerty987', false);
 
 INSERT INTO Whisky (user_id, name, taste, drinking_style, price, memo, is_deleted) VALUES
 (1, '山崎12年', 'フルーティーで華やか', 'ストレート', 12000, '銀座のバーで初めて飲んだ。香りが素晴らしい。', false),
@@ -18,14 +18,14 @@ INSERT INTO Whisky (user_id, name, taste, drinking_style, price, memo, is_delete
 (5, '知多', '軽やかで穏やか', '水割り', 4000, '居酒屋でよく頼む定番。食事に合う。', false);
 
 
-INSERT INTO Rating (user_id, whisky_id, rating) VALUES
-(1, 1, 5),
-(2, 2, 4),
-(3, 3, 5),
-(4, 4, 4),
-(5, 5, 3),
-(1, 6, 5),
-(2, 7, 4),
-(3, 8, 5),
-(4, 9, 4),
-(5, 10, 3);
+INSERT INTO Rating (user_id, whisky_id, rating,is_deleted) VALUES
+(1, 1, 5, false),
+(2, 2, 4, false),
+(3, 3, 5, false),
+(4, 4, 4, false),
+(5, 5, 3, false),
+(1, 6, 5, false),
+(2, 7, 4, false),
+(3, 8, 5, false),
+(4, 9, 4, false),
+(5, 10, 3, false);
