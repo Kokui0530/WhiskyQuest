@@ -222,4 +222,35 @@ public class WhiskyControllerTest {
     verify(service, times(1)).updateWhiskyInfo(any(WhiskyInfo.class));
 
   }
+
+  @Test //@PutMapping("/deleteUser/{userId}")
+  void ユーザー情報の論理削除が出来ること() throws Exception {
+    int userId = 999;
+
+    mockMvc.perform(put("/deleteUser/{userId}", userId))
+        .andExpect(status().isOk());
+
+    verify(service, times(1)).deleteUser(userId);
+  }
+
+  @Test//@PutMapping("/deleteWhisky/{userId}")
+  void ウイスキー情報の論理削除ができること() throws Exception {
+    int userId = 999;
+
+    mockMvc.perform(put("/deleteWhisky/{userId}", userId))
+        .andExpect(status().isOk());
+
+    verify(service, times(1)).deleteWhisky(userId);
+
+  }
+
+  @Test// @PutMapping("/deleteRating/{userId}")
+  void 評価情報の論理削除ができること() throws Exception {
+    int userId = 999;
+    mockMvc.perform(put("/deleteRating/{userId}", userId))
+        .andExpect(status().isOk());
+
+    verify(service, times(1)).deleteRating(userId);
+
+  }
 }

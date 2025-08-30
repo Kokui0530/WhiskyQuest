@@ -1,6 +1,7 @@
 package com.whisukiquest.whiskyquest_api.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
@@ -144,5 +145,39 @@ public class WhiskyRepositoryTest {
     assertThat(actual.getRating()).isEqualTo(rating.getRating());
   }
 
+  @Test //deleteUser
+  void ユーザー情報が論理削除出来ること() {
+    int id = 2;
+    Users user = new Users();
+    user.setId(id);
 
+    sut.deleteUser(user);
+    assertNull(sut.searchUserById(id), "論理削除されたユーザーは検索出来ない事");
+  }
+
+  @Test //deleteWhisky
+  void ウイスキー情報が論理削除出来ること(){
+    int id = 2;
+    int userId = 2;
+    Whisky whisky = new Whisky();
+    whisky.setId(id);
+    whisky.setUserId(userId);
+
+    sut.deleteWhisky(whisky);
+    assertNull(sut.searchWhiskyById(id), "論理削除されたウイスキー情報は検索出来ない事");
+
+  }
+
+  @Test //deleteRating
+  void 評価情報が論理削除出来ること() {
+    int id = 2;
+    int userId = 2;
+    Rating rating = new Rating();
+    rating.setId(id);
+    rating.setUserId(userId);
+
+    sut.deleteRating(rating);
+    assertNull(sut.searchRatingById(id), "論理削除されている評価情報は検索出来ない事");
+
+  }
 }
