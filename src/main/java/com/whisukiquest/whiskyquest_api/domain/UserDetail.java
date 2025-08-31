@@ -3,6 +3,7 @@ package com.whisukiquest.whiskyquest_api.domain;
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,8 +16,13 @@ public class UserDetail {
 
   //1ユーザー：多ウイスキー情報：多評価
   // ユーザーが登録している、ウイスキー情報と評価詳細を表示
+  @Valid
   private Users users;
+
+  @Valid
   private List<Whisky> whiskyList;
+
+  @Valid
   private List<Rating> ratingList;
 
 }
