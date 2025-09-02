@@ -233,24 +233,43 @@ public class WhiskyControllerTest {
     verify(service, times(1)).deleteUser(userId);
   }
 
-  @Test//@PutMapping("/deleteWhisky/{userId}")
+  @Test//@PutMapping("/deleteWhisky/{userId}{whiskyId}")
   void ウイスキー情報の論理削除ができること() throws Exception {
     int userId = 999;
+    int whiskyId = 888;
 
-    mockMvc.perform(put("/deleteWhisky/{userId}", userId))
+    mockMvc.perform(put("/deleteWhisky/{userId}/{whiskyId}", userId , whiskyId))
         .andExpect(status().isOk());
 
-    verify(service, times(1)).deleteWhisky(userId);
+    verify(service, times(1)).deleteWhisky(userId , whiskyId);
 
   }
 
-  @Test// @PutMapping("/deleteRating/{userId}")
+  @Test// @PutMapping("/deleteRating/{userId}{ratingId}")
   void 評価情報の論理削除ができること() throws Exception {
     int userId = 999;
-    mockMvc.perform(put("/deleteRating/{userId}", userId))
+    int ratingId = 888;
+    mockMvc.perform(put("/deleteRating/{userId}/{ratingId}", userId , ratingId))
         .andExpect(status().isOk());
 
-    verify(service, times(1)).deleteRating(userId);
+    verify(service, times(1)).deleteRating(userId , ratingId);
 
   }
+
+@Test
+  void 存在しないIDで404が返ること() throws Exception{
+  int id =987;
+
+  Mockito.when(service.searchUserDetail(id)).thenReturn(null);
+
+  mockMvc.perform(get("/users/{id}",id))
+      .andExpect(status().isNotFound());
+
+}
+
+@Test
+  void IDを指定せずにアクセスした時に404が返ること()throws Exception{
+  mockMvc.perform(get("/users"))
+      .andExpect(status().isNotFound());
+}
 }
