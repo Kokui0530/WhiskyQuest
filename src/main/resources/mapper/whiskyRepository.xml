@@ -6,7 +6,7 @@
 
   <!--User情報検索-->
   <select id="searchUserById" resultType="com.whisukiquest.whiskyquest_api.data.Users">
-    SELECT * FROM users WHERE id= #{Id} AND is_deleted = FALSE
+    SELECT * FROM users WHERE id= #{id} AND is_deleted = FALSE
   </select>
 
   <!--Whisky情報検索-->
@@ -16,7 +16,7 @@
 
   <!--Whisky詳細検索、whiskyIdで検索-->
   <select id="searchWhiskyById" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
-    SELECT * FROM whisky WHERE id= #{Id} AND is_deleted = FALSE
+    SELECT * FROM whisky WHERE id= #{id} AND is_deleted = FALSE
   </select>
 
   <!--Rating情報検索-->
@@ -78,12 +78,12 @@
 
   <!--ウイスキー情報の論理削除-->
   <update id="deleteWhisky">
-    UPDATE whisky SET is_deleted = TRUE WHERE user_id = #{userId}
+    UPDATE whisky SET is_deleted = TRUE WHERE user_id = #{userId} AND id = #{id}
   </update>
 
   <!--評価情報の論理削除-->
   <update id="deleteRating">
-    UPDATE rating SET is_deleted = TRUE WHERE user_id = #{userId}
+    UPDATE rating SET is_deleted = TRUE WHERE user_id = #{userId} AND id = #{id}
   </update>
 
 
