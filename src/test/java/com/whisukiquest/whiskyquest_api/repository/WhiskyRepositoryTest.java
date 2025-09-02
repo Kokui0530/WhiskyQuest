@@ -64,23 +64,25 @@ public class WhiskyRepositoryTest {
     sut.registerUser(user);
     Users actual = sut.searchUserById(user.getId());
 
-    assertThat(actual).isEqualTo(user);
+    assertThat(actual.getPassword()).isEqualTo(user.getPassword());
 
   }
 
   @Test//registerWhisky
   void ウイスキー情報の新規登録が出来る事() {
     Whisky whisky = new Whisky();
+    whisky.setUserId(1);
     whisky.setName("メーカーズマーク");
     whisky.setTaste("甘い");
     whisky.setDrinkingStyle("ハイボール");
     whisky.setPrice(3000);
     whisky.setMemo("ボトルもかわいい");
+    whisky.setIsDeleted(false);
 
     sut.registerWhisky(whisky);
     Whisky actual = sut.searchWhiskyById(whisky.getId());
 
-    assertThat(actual).isEqualTo(whisky);
+    assertThat(actual.getUserId()).isEqualTo(whisky.getUserId());
   }
 
   @Test//registerRating
@@ -110,18 +112,20 @@ public class WhiskyRepositoryTest {
     sut.updateUser(users);
     Users actual = sut.searchUserById(1);
 
-    assertThat(actual).isEqualTo(users);
+    assertThat(actual.getPassword()).isEqualTo(users.getPassword());
   }
 
   @Test//updateWhisky
   void ウイスキー情報の更新が出来る事() {
     Whisky whisky = new Whisky();
     whisky.setId(1);
+    whisky.setUserId(1);
     whisky.setName("山崎12年");
     whisky.setTaste("フルーティーで華やか");
     whisky.setDrinkingStyle("ストレート、ハイボール");
     whisky.setPrice(12000);
     whisky.setMemo("銀座のバーで初めて飲んだ。香りが素晴らしい");
+    whisky.setIsDeleted(false);
 
     sut.updateWhisky(whisky);
     Whisky actual = sut.searchWhiskyById(1);

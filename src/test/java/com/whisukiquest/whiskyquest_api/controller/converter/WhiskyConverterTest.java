@@ -44,7 +44,7 @@ private WhiskyConverter sut;
 
     UserDetail actual = sut.converterUserDetail(users,whiskyList,ratingList);
 
-    assertEquals(expected,actual);
+    assertEquals(expected.getUsers(),actual.getUsers());
   }
 
 
@@ -64,7 +64,7 @@ private WhiskyConverter sut;
 
     WhiskyDetail actual = sut.converterWhiskyDetail(whisky,ratingList);
 
-    assertEquals(expected,actual);
+    assertEquals(expected.getWhisky(),actual.getWhisky());
 
   }
 

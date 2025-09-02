@@ -31,7 +31,7 @@ public class WhiskyConverter {
     UserDetail userDetail = new UserDetail();
     userDetail.setUsers(users);
     for (Whisky whisky : whiskyList) {
-      if (users.getId() == whisky.getUserId()) {
+      if (users != null && users.getId() == whisky.getUserId()) {
         converterWhiskyList.add(whisky);
         for (Rating rating : ratingList) {
           if (whisky.getId() == rating.getWhiskyId()) {

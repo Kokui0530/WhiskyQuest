@@ -1,6 +1,7 @@
 package com.whisukiquest.whiskyquest_api.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -14,9 +15,9 @@ import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
 import com.whisukiquest.whiskyquest_api.repository.WhiskyRepository;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -31,13 +32,8 @@ public class WhiskyServiceTest {
   @Mock
   private WhiskyConverter converter;
 
+  @InjectMocks
   private WhiskyService sut;
-
-  @BeforeEach
-  void 事前準備() {
-    sut = new WhiskyService(repository, converter);
-  }
-
 
   @Test//searchUserDetail
   void ユーザー詳細検索＿リポジトリとコンバーターが適切に呼び出せていること() {
@@ -168,20 +164,32 @@ public class WhiskyServiceTest {
   @Test //deleteWhisky
   void ウイスキー情報の論理削除が出来る事＿適切にリポジトリが呼び出されている事() {
     int userId = 999;
+    int whiskyId = 888;
     Whisky whisky = new Whisky();
     whisky.setUserId(userId);
-    sut.deleteWhisky(userId);
+    whisky.setId(whiskyId);
+    sut.deleteWhisky(userId , whiskyId);
 
     verify(repository, times(1)).deleteWhisky(whisky);
   }
 
   @Test //deleteRating
   void 評価情報の論理削除が出来る事＿適切にリポジトリが呼び出せている事(){
-    int useId = 999;
+    int userId = 999;
+    int ratingId = 888;
     Rating rating = new Rating();
-    rating.setUserId(useId);
-    sut.deleteRating(useId);
+    rating.setUserId(userId);
+    rating.setId(ratingId);
+    sut.deleteRating(userId , ratingId);
 
     verify(repository, times(1)).deleteRating(rating);
   }
+
+  @Test
+  void 存在しないIDで検索したときに異常が発生しないこと() throws Exception{
+    int id = 987;
+    UserDetail result = sut.searchUserDetail(id);
+    assertNull(result);
+  }
+
 }
