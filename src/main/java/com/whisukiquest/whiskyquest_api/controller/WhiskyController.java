@@ -139,26 +139,28 @@ description = "ユーザーIDをもとに、ユーザー情報の更新を行い
   /****
    * ユーザーIDに紐づくウイスキー情報の論理削除を行います。
    * @param userId ユーザーID
+   * @param whiskyId ウイスキーID
    * @return 実行結果
    */
   @Operation(summary = "ウイスキー情報の論理削除",
-      description = "ユーザーIDをもとに、ユーザーが登録したウイスキー情報の論理削除を行います。")
-  @PutMapping("/deleteWhisky/{userId}")
-  public ResponseEntity<Void> deleteWhisky(@PathVariable int userId) {
-    service.deleteWhisky(userId);
+      description = "ユーザーIDとウイスキーIDをもとに、ユーザーが登録したウイスキー情報の論理削除を行います。")
+  @PutMapping("/deleteWhisky/{userId}/{whiskyId}")
+  public ResponseEntity<Void> deleteWhisky(@PathVariable int userId , @PathVariable int whiskyId) {
+    service.deleteWhisky(userId , whiskyId);
     return ResponseEntity.ok().build();
   }
 
   /****
    * ユーザーIDに紐づく評価情報の論理削除を行います。
    * @param userId ユーザーID
+   * @param ratingId 評価ID
    * @return 実行結果
    */
   @Operation(summary = "評価情報の論理削除",
-      description = "ユーザーIDをもとに、ユーザーが登録した評価情報の論理削除を行います。")
-  @PutMapping("/deleteRating/{userId}")
-  public ResponseEntity<Void> deleteRating(@PathVariable int userId) {
-    service.deleteRating(userId);
+      description = "ユーザーIDと評価IDをもとに、ユーザーが登録した評価情報の論理削除を行います。")
+  @PutMapping("/deleteRating/{userId}/{ratingId}")
+  public ResponseEntity<Void> deleteRating(@PathVariable int userId , @PathVariable int ratingId) {
+    service.deleteRating(userId , ratingId);
     return ResponseEntity.ok().build();
   }
 

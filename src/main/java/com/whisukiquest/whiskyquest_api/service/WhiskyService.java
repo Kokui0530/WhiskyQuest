@@ -125,20 +125,24 @@ public class WhiskyService {
   /**
    * ウイスキー情報の論理削除を行います。
    * @param userId ユーザーID
+   * @param whiskyId ウイスキーID
    */
-  public void deleteWhisky(int userId){
+  public void deleteWhisky(int userId , int whiskyId){
     Whisky whisky = new Whisky();
     whisky.setUserId(userId);
+    whisky.setId(whiskyId);
     repository.deleteWhisky(whisky);
   }
 
   /**
    * 評価情報の論理削除を行います。
    * @param userId ユーザーID
+   * @param ratingId 評価ID
    */
-  public void deleteRating(int userId){
+  public void deleteRating(int userId , int ratingId){
     Rating rating = new Rating();
     rating.setUserId(userId);
+    rating.setId(ratingId);
     repository.deleteRating(rating);
   }
 }

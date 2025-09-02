@@ -35,7 +35,7 @@ public class Users {
   @NotBlank
   private String password;
 
-  @Schema(description = "削除フラグ", example = "退会")
-  private boolean isDeleted;
+  @Schema(description = "削除フラグ" , example = "false")
+  private Boolean isDeleted;
 
 }

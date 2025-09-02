@@ -37,9 +37,9 @@ public class Rating {
   @Max(value = 5, message = "1～5で入力して下さい")
   private int rating;
 
-  @Schema(description = "評価登録日", example = "20235.9.1")
+  @Schema(description = "評価登録日", example = "2025.9.1")
   private LocalDateTime ratingAt;
 
-  @Schema(description = "削除フラグ", example = "削除")
-  private boolean isDeleted;
+  @Schema(description = "削除フラグ" , example = "false")
+  private Boolean isDeleted;
 }

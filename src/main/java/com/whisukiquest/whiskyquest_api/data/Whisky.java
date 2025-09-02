@@ -27,7 +27,7 @@ public class Whisky {
   @Min(value = 1 , message ="IDは数値で１以上です" , groups = { Update.class , Deleted.class })
   private Integer userId;
 
-  @Schema(description = "名前", example = "田中　太郎")
+  @Schema(description = "商品名", example = "アードベック")
   @NotBlank
   private String name;
 
@@ -43,7 +43,7 @@ public class Whisky {
   @Schema(description = "メモ", example = "大阪駅のBarで飲んだ")
   private String memo;
 
-  @Schema(description = "削除フラグ", example = "削除")
-  private boolean isDeleted;
+  @Schema(description = "削除フラグ" , example = "false")
+  private Boolean isDeleted;
 
 }
