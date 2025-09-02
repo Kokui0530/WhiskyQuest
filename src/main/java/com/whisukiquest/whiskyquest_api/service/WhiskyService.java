@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/****
+ *ユーザー情報とウイスキー情報を取り扱うサービスです。検索、更新、登録処理を行います。
+ */
+
 @Service
 public class WhiskyService {
 
@@ -25,7 +29,12 @@ public class WhiskyService {
     this.converter = converter;
   }
 
-  //ユーザー詳細、登録したウイスキー詳細、評価詳細が取れてくる
+  /****
+   *ユーザー詳細検索です。ユーザー情報、ユーザーIDに紐づくウイスキー情報、評価情報を取得します。
+   * @param userId ユーザーID
+   * @return ユーザー詳細
+   */
+  @Transactional
   public UserDetail searchUserDetail(int userId) {
     List<Whisky> whiskyList = repository.searchWhiskyList(userId);
     List<Rating> ratingList = repository.searchRatingList(userId);
@@ -35,7 +44,12 @@ public class WhiskyService {
     return userDetail;
   }
 
-  //ウイスキー詳細、そのウイスキーに対しての評価一覧が取れてくる
+  /***
+   * ウイスキー詳細の一覧検索です。ウイスキーIDに紐づく評価一覧を取得します。
+   * @param whiskyId ウイスキーID
+   * @return ウイスキー詳細一覧
+   */
+  @Transactional
   public WhiskyDetail searchWhiskyDetail(int whiskyId) {
     Whisky whisky = repository.searchWhiskyById(whiskyId);
     List<Rating> ratingList = repository.searchRatingByWhiskyId(whiskyId);
@@ -43,32 +57,48 @@ public class WhiskyService {
     return whiskyDetail;
   }
 
-
-  @Transactional //ユーザー情報の新規登録
+  /****
+   * ユーザー情報の登録を行います。
+   * @param users ユーザー情報
+   * @return ユーザー情報
+   */
+  @Transactional
   public Users registerUsers(Users users) {
     repository.registerUser(users);
     return users;
   }
 
-  @Transactional //ウイスキー詳細と評価の新規登録
+  /***
+   * ウイスキー情報と評価情報の新規登録を行います。whiskyIDは自動採番の為、Whiskyを登録 → whiskyIDが自動採番
+   * 自動採番されたウイスキーIDを評価情報のウイスキーIDに設定します。
+   * @param whiskyInfo ウイスキー詳細
+   * @return ウイスキー詳細
+   */
+  @Transactional
   public WhiskyInfo registerWhiskyInfo(WhiskyInfo whiskyInfo) {
     repository.registerWhisky(whiskyInfo.getWhisky());
-
-    //whiskyIDは自動採番の為、Whiskyを登録→whiskyIDが自動採番→自動採番されたwhiskyIdをratingのwhiskyIdにセット
     int whiskyId = whiskyInfo.getWhisky().getId();
     whiskyInfo.getRating().setWhiskyId(whiskyId);
     repository.registerRating(whiskyInfo.getRating());
     return whiskyInfo;
   }
 
-  //ユーザー情報更新
+  /****
+   * ユーザー情報の更新を行います。
+   * @param users ユーザー情報
+   * @return ユーザー情報
+   */
   public Users updateUser(Users users) {
     repository.updateUser(users);
     return repository.searchUserById(users.getId());
   }
 
+  /****
+   * ウイスキー情報と評価情報の更新を行います。
+   * @param whiskyInfo ウイスキー情報
+   * @return ウイスキー情報
+   */
 
-  //ウイスキー情報と評価情報の更新
   @Transactional
   public WhiskyInfo updateWhiskyInfo(WhiskyInfo whiskyInfo) {
     repository.updateWhisky(whiskyInfo.getWhisky());
@@ -82,21 +112,30 @@ public class WhiskyService {
     return updateInfo;
   }
 
-  //ユーザー情報の論理削除
+  /**
+   * ユーザー情報の論理削除を行います。
+   * @param id ユーザーID
+   */
   public void deleteUser(int id){
     Users user = new Users();
     user.setId(id);
     repository.deleteUser(user);
   }
 
-  //ウイスキー情報の論理削除
+  /**
+   * ウイスキー情報の論理削除を行います。
+   * @param userId ユーザーID
+   */
   public void deleteWhisky(int userId){
     Whisky whisky = new Whisky();
     whisky.setUserId(userId);
     repository.deleteWhisky(whisky);
   }
 
-  //評価情報の論理削除
+  /**
+   * 評価情報の論理削除を行います。
+   * @param userId ユーザーID
+   */
   public void deleteRating(int userId){
     Rating rating = new Rating();
     rating.setUserId(userId);
