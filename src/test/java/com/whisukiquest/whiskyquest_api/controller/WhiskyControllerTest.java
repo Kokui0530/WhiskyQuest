@@ -166,6 +166,7 @@ public class WhiskyControllerTest {
             .content(
                 """
                       {
+                          "id": 1,
                           "userName": "谷口　雪",
                           "mail": "aya@example.com",
                           "password": "asd1"
@@ -201,6 +202,7 @@ public class WhiskyControllerTest {
                 """
                     {
                         "whisky": {
+                            "id": 1,
                             "userId":1,
                             "name": "メーカーズマーク",
                             "taste": "甘い",
@@ -210,6 +212,7 @@ public class WhiskyControllerTest {
                             "deleted": false
                         },
                         "rating": {
+                            "id": 1,
                             "userId": 1,
                             "whiskyId" :1,
                             "rating": 5
