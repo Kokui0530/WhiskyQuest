@@ -1,4 +1,5 @@
-## WhisukiQuesut～ウイスキー冒険記録～
+## WhisukiQuesut~お気に入り１本を探しに~
+
 ## はじめに
 このリポジトリは、Javaを学習中の私が作成したウイスキー記録管理アプリのプロジェクトです。
 ### 制作背景
@@ -18,22 +19,53 @@
 
 ・自分のおすすめの中で厳選する事が出来る
 
+：ウイスキーの口コミ・評価を確認出来て新しいウイスキーにチャレンジしやすい
+
 こうした実体験をもとに、このアプリの開発を始めました。
 
 
 ## 使用技術
-- **Java 17**（または使用しているバージョン）
-- **Spring Boot**：Webアプリケーションの構築
-- **MyBatis**：SQLベースのORM
-- **MySQL**：本番用データベース
-- **H2 Database**：テスト用インメモリDB
-- **Lombok**：コードの簡素化
-- **Apache Commons Lang**：ユーティリティライブラリ
-- **Spring Validation**：入力値の検証
-- **Springdoc OpenAPI**：Swagger UIによるAPIドキュメント生成
-- **JUnit / Spring Boot Test**：テストフレームワーク
-
+- **Java 17**
+- **Spring Boot**
+- **MyBatis**
+- **MySQL**
+- **H2 Database**
+- **Lombok**
+- **Apache Commons Lang**
+- **Spring Validation**
+- **Springdoc OpenAPI**
+- **JUnit / Spring Boot Test**
 
 ## 機能一覧
-・ユーザー登録
-・ウイスキー登録
+## ログイン画面
+## APIエンドポイント一覧
+### ユーザー情報に関する管理
+@GetMapping("/user/{userId}")
+ユーザー詳細検索。ユーザーが登録しているウイスキー一覧、評価一覧を検索できます。
+
+@PostMapping("/registerUser")
+ユーザー情報新規登録。ユーザーの詳細情報を新規登録できます。
+
+@PutMapping("/updateUser/{userId}")
+ユーザー情報更新。ユーザー詳細情報の更新ができます。
+
+ @PutMapping("/deleteUser/{userId}")
+ユーザー情報削除。ユーザー詳細情報を論理削除できます。
+
+
+### ウイスキー情報に関する管理
+@GetMapping("/whisky/{whiskyId}")
+ウイスキー詳細とそのウイスキーの評価一覧検索。1本のウイスキーに対して様々なユーザーが評価した内容が検索できます。
+
+  @PostMapping("/registerWhisky")
+ウイスキー詳細とそのウイスキーに対しての評価の登録。ウイスキー情報と評価を登録できます。
+
+@PutMapping("/updateWhiskyInfo/{WhiskyId}/{RatingId}")
+ウイスキー情報と評価情報の更新。
+
+ @PutMapping("/deleteWhisky/{userId}/{whiskyId}")
+ウイスキー情報の論理削除。
+
+@PutMapping("/deleteRating/{userId}/{ratingId}")
+評価情報の論理削除。
+
