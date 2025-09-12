@@ -6,7 +6,7 @@ CREATE TABLE users (
     is_deleted BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE Whisky (
+CREATE TABLE whisky (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     name VARCHAR(100),
@@ -17,7 +17,7 @@ CREATE TABLE Whisky (
     is_deleted BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE Rating (
+CREATE TABLE rating (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     whisky_id INT NOT NULL,
