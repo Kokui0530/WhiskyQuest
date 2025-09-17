@@ -35,6 +35,7 @@
 - **Spring Validation**
 - **Springdoc OpenAPI**
 - **JUnit / Spring Boot Test**
+- **AWS
 
 ## 機能一覧
 ## ログイン画面
