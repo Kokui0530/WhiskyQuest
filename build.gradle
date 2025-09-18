@@ -48,6 +48,11 @@ dependencies {
 	testImplementation 'com.h2database:h2:2.3.232'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	//SpringSecurity
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+
 }
 
 tasks.named('test') {
