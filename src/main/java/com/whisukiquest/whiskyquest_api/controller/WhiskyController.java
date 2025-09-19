@@ -4,10 +4,12 @@ import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyRanking;
 import com.whisukiquest.whiskyquest_api.service.WhiskyService;
 import com.whisukiquest.whiskyquest_api.validation.Update;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,16 @@ public class WhiskyController {
   public UserDetail getUserList(
       @PathVariable  int userId) {
     return service.searchUserDetail(userId);
+  }
+
+  /**
+   * ウイスキーランキング検索です。
+   * 登録のあるウイスキー全件と、そのウイスキーに対する評価を降順で取得します。
+   * @return ウイスキー情報全件、評価情報
+   */
+  @GetMapping("/whiskyRanking")
+  public List<WhiskyRanking> whiskyRankings() {
+    return service.searchWhiskyRanking();
   }
 
   /****

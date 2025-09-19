@@ -3,10 +3,15 @@ package com.whisukiquest.whiskyquest_api.controller.converter;
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
+import com.whisukiquest.whiskyquest_api.domain.RatingAverage;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyRanking;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
@@ -69,4 +74,51 @@ public class WhiskyConverter {
   return whiskyDetail;
   }
 
+  /**
+   * ウイスキーに紐づく評価情報をマッピングし、表示用ランキングDTOへ変換します。 多ウイスキー：多評価
+   *
+   * @param whiskyList        ウイスキー一覧
+   * @param ratingAverageList 評価の平均値と件数の一覧
+   * @return 評価順(降順)に並んだ、ウイスキーランキング情報
+   */
+  public List<WhiskyRanking> converterWhiskyRanking(
+      List<Whisky> whiskyList, List<RatingAverage> ratingAverageList) {
+    Map<Integer, RatingAverage> ratingMap = new HashMap<>(); //ウイスキーID:評価情報のMap
+
+    for (RatingAverage average : ratingAverageList) {
+      if (ratingMap.put(average.getWhiskyId(), average) != null) { //MapにウイスキーID、平均評価を登録
+        throw new IllegalStateException("ウイスキーIDが重複しています。");
+      } //もしウイスキーIDが重複した場合処理を停止
+    }
+
+    List<WhiskyRanking> whiskyRankingList = new ArrayList<>();
+    for (Whisky whisky : whiskyList) { //ウイスキーリストを回して
+      RatingAverage ratingAverage = ratingMap.get(whisky.getId());
+      //ratingMapから同じウイスキーIDに対する評価情報を取得
+
+      WhiskyRanking whiskyRanking = new WhiskyRanking();
+      whiskyRanking.setWhiskyId(whisky.getId());
+      whiskyRanking.setName(whisky.getName());
+
+      if (ratingAverage != null) { //平均評価があれば値をセット
+        whiskyRanking.setAverageRating(ratingAverage.getAverageRating());
+      } else { //もし平均評価が0の場合は0をセット
+        whiskyRanking.setAverageRating(0);
+      }
+
+      if (ratingAverage != null) { //評価件数があれば値をセット
+        whiskyRanking.setRatingCount(ratingAverage.getRatingCount());
+      } else { //もし評価が0件の場合は0をセット
+        whiskyRanking.setRatingCount(0);
+      }
+
+      //表示用DTO WhiskyRankingへ値をセット
+      whiskyRankingList.add(whiskyRanking);
+    }
+    // 降順に並び替え
+    whiskyRankingList.sort(Comparator.comparingDouble(
+        (WhiskyRanking whiskyRanking) -> whiskyRanking.getAverageRating()).reversed());
+
+    return whiskyRankingList;
+  }
 }
