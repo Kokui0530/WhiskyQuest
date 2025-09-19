@@ -4,9 +4,11 @@ import com.whisukiquest.whiskyquest_api.controller.converter.WhiskyConverter;
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
+import com.whisukiquest.whiskyquest_api.domain.RatingAverage;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
+import com.whisukiquest.whiskyquest_api.domain.WhiskyRanking;
 import com.whisukiquest.whiskyquest_api.repository.WhiskyRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,21 @@ public class WhiskyService {
     UserDetail userDetail = converter.converterUserDetail(users, whiskyList, ratingList);
 
     return userDetail;
+  }
+
+  /**
+   * ウイスキーランキング検索です。 ウイスキー全件それぞれに紐づく評価情報を取得します。
+   *
+   * @return ウイスキー情報、評価情報
+   */
+  @Transactional
+  public List<WhiskyRanking> searchWhiskyRanking() {
+    List<Whisky> whiskyList = repository.searchWhisky();
+    List<RatingAverage> ratingAverageList = repository.searchAverageRating();
+    List<WhiskyRanking> whiskyRankingList =
+        converter.converterWhiskyRanking(whiskyList, ratingAverageList);
+
+    return whiskyRankingList;
   }
 
   /***

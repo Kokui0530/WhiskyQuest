@@ -3,6 +3,7 @@ package com.whisukiquest.whiskyquest_api.repository;
 import com.whisukiquest.whiskyquest_api.data.Rating;
 import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
+import com.whisukiquest.whiskyquest_api.domain.RatingAverage;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,6 +21,12 @@ public interface WhiskyRepository {
   Users searchUserById(int id);
 
   /**
+   * ウイスキー情報全件検索を行います。
+   * @return ウイスキー情報
+   */
+  List<Whisky> searchWhisky();
+
+  /**
    * ウイスキーの一覧検索を行います。
    * @param userId　ユーザーID
    * @return ユーザーに紐づくウイスキー一覧
@@ -32,6 +39,12 @@ public interface WhiskyRepository {
    * @return ウイスキーIDに紐づくウイスキー情報
    */
   Whisky searchWhiskyById(int whiskyId);
+
+  /**
+   * 評価情報の平均検索を行います。
+   * @return 評価情報
+   */
+  List<RatingAverage> searchAverageRating();
 
   /**
    * 評価情報の一覧検索を行います。
