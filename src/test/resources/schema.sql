@@ -13,7 +13,6 @@ CREATE TABLE whisky (
     taste VARCHAR(100),
     drinking_style VARCHAR(100),
     price INT,
-    memo TEXT,
     is_deleted BOOLEAN DEFAULT FALSE
 );
 
@@ -22,6 +21,7 @@ CREATE TABLE rating (
     user_id INT NOT NULL,
     whisky_id INT NOT NULL,
     rating INT,
+    comment TEXT,
     rating_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_deleted BOOLEAN DEFAULT FALSE
 );

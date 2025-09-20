@@ -37,6 +37,9 @@ public class Rating {
   @Max(value = 5, message = "1～5で入力して下さい")
   private int rating;
 
+  @Schema(description = "コメント", example = "大阪駅のBarで飲んだ")
+  private String comment;
+
   @Schema(description = "評価登録日", example = "2025.9.1")
   private LocalDateTime ratingAt;
 

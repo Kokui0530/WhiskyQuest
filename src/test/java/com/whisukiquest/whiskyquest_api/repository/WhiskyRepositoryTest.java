@@ -76,7 +76,6 @@ public class WhiskyRepositoryTest {
     whisky.setTaste("甘い");
     whisky.setDrinkingStyle("ハイボール");
     whisky.setPrice(3000);
-    whisky.setMemo("ボトルもかわいい");
     whisky.setIsDeleted(false);
 
     sut.registerWhisky(whisky);
@@ -91,6 +90,7 @@ public class WhiskyRepositoryTest {
     rating.setRating(5);
     rating.setUserId(2);
     rating.setWhiskyId(2);
+    rating.setComment("スモーキー過ぎて苦手");
 
     sut.registerRating(rating);
     List<Rating> actual = sut.searchRatingList(rating.getUserId());
@@ -124,7 +124,6 @@ public class WhiskyRepositoryTest {
     whisky.setTaste("フルーティーで華やか");
     whisky.setDrinkingStyle("ストレート、ハイボール");
     whisky.setPrice(12000);
-    whisky.setMemo("銀座のバーで初めて飲んだ。香りが素晴らしい");
     whisky.setIsDeleted(false);
 
     sut.updateWhisky(whisky);
@@ -141,6 +140,7 @@ public class WhiskyRepositoryTest {
     rating.setUserId(1);
     rating.setWhiskyId(1);
     rating.setRating(4);
+    rating.setComment("友人に贈りたい");
 
     sut.updateRating(rating);
     Rating actual = sut.searchRatingById(1);

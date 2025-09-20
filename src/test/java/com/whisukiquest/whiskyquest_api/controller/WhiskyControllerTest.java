@@ -135,12 +135,12 @@ public class WhiskyControllerTest {
                             "taste": "甘い",
                             "drinkingStyle": "ハイボール",
                             "price": 3000,
-                            "memo": "ボトルもかわいい",
                             "deleted": false
                         },
                         "rating": {
                             "userId": 2,
-                            "rating": 5
+                            "rating": 5,
+                            "comment": "甘くて美味しい"
                         }
                     }
                     """
@@ -208,14 +208,14 @@ public class WhiskyControllerTest {
                             "taste": "甘い",
                             "drinkingStyle": "ハイボール",
                             "price": 3000,
-                            "memo": "ボトルもかわいい",
                             "deleted": false
                         },
                         "rating": {
                             "id": 1,
                             "userId": 1,
                             "whiskyId" :1,
-                            "rating": 5
+                            "rating": 5,
+                            "comment": "蜂蜜の香り"
                         }
                     }
                     """
