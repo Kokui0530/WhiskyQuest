@@ -24,6 +24,11 @@
     SELECT * FROM whisky WHERE id= #{id} AND is_deleted = FALSE
   </select>
 
+  <!--Whisky詳細検索、whiskyNameで検索-->
+  <select id="searchWhiskyByName" resultType="com.whisukiquest.whiskyquest_api.data.Whisky">
+    SELECT * FROM whisky WHERE name= #{name} AND is_deleted = FALSE
+  </select>
+
   <!--Rating情報平均検索-->
   <select id="searchAverageRating" resultType="com.whisukiquest.whiskyquest_api.domain.RatingAverage">
     SELECT whisky_id, AVG(rating) AS average_rating, COUNT(*) AS rating_count

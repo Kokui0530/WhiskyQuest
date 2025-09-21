@@ -1,6 +1,7 @@
 package com.whisukiquest.whiskyquest_api.controller;
 
 import com.whisukiquest.whiskyquest_api.data.Users;
+import com.whisukiquest.whiskyquest_api.data.Whisky;
 import com.whisukiquest.whiskyquest_api.domain.UserDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyDetail;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
@@ -10,6 +11,7 @@ import com.whisukiquest.whiskyquest_api.validation.Update;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +58,8 @@ public class WhiskyController {
    * 登録のあるウイスキー全件と、そのウイスキーに対する評価を降順で取得します。
    * @return ウイスキー情報全件、評価情報
    */
+  @Operation(summary = "ウイスキー詳細と評価詳細の全件検索",
+  description = "登録のあるウイスキーを評価順（降順）で表示します。")
   @GetMapping("/whiskyRanking")
   public List<WhiskyRanking> whiskyRankings() {
     return service.searchWhiskyRanking();
@@ -101,6 +105,28 @@ description = "ウイスキーIDをもとに、ウイスキーの詳細、評価
   public ResponseEntity<WhiskyInfo> registerWhiskyInfo(@RequestBody @Valid WhiskyInfo whiskyInfo) {
     WhiskyInfo responseWhiskyInfo = service.registerWhiskyInfo(whiskyInfo);
     return ResponseEntity.status(HttpStatus.CREATED).body(responseWhiskyInfo);
+  }
+
+  /**
+   * ウイスキー情報と評価情報の新規登録を行います。
+   * 登録前にウイスキー名の重複チェックを行い、既に存在する場合は 409 Conflict を返します。
+   * 重複がなければウイスキー情報と評価情報をまとめて登録し、登録結果を返します。
+   * @param whiskyInfo 登録するウイスキー情報と評価情報
+   * @return 実行結果
+   */
+  @Operation(summary = "ウイスキー情報と評価情報の新規登録（重複チェックあり）",
+      description = "ウイスキー名の重複チェックを行い、未登録の場合のみウイスキー情報と評価情報を保存します。")
+  @PostMapping("/whisky")
+  public ResponseEntity<WhiskyInfo> createWhiskyInfo(@RequestBody @Valid WhiskyInfo whiskyInfo) {
+    Optional<Whisky> optionalWhisky =
+        service.checkByWhiskyName(whiskyInfo.getWhisky().getName());
+    if (optionalWhisky.isPresent()) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).build();
+      //重複が見つかった場合、409エラーを返す。
+    }
+
+    WhiskyInfo createdWhiskyInfo = service.registerWhiskyInfo(whiskyInfo);
+    return ResponseEntity.ok(createdWhiskyInfo);
   }
 
   /****
