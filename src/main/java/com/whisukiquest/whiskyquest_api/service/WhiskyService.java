@@ -11,6 +11,7 @@ import com.whisukiquest.whiskyquest_api.domain.WhiskyInfo;
 import com.whisukiquest.whiskyquest_api.domain.WhiskyRanking;
 import com.whisukiquest.whiskyquest_api.repository.WhiskyRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,6 +73,15 @@ public class WhiskyService {
     List<Rating> ratingList = repository.searchRatingByWhiskyId(whiskyId);
     WhiskyDetail whiskyDetail = converter.converterWhiskyDetail(whisky, ratingList);
     return whiskyDetail;
+  }
+
+  /***
+   * ウイスキー名でウイスキー情報を検索し、重複がないかチェックします。
+   * @param name ウイスキー名
+   * @return ウイスキー情報
+   */
+  public Optional<Whisky> checkByWhiskyName(String name){
+    return repository.searchWhiskyByName(name);
   }
 
   /****

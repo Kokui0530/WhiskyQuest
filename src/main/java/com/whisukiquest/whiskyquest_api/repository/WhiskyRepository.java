@@ -5,6 +5,7 @@ import com.whisukiquest.whiskyquest_api.data.Users;
 import com.whisukiquest.whiskyquest_api.data.Whisky;
 import com.whisukiquest.whiskyquest_api.domain.RatingAverage;
 import java.util.List;
+import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -39,6 +40,13 @@ public interface WhiskyRepository {
    * @return ウイスキーIDに紐づくウイスキー情報
    */
   Whisky searchWhiskyById(int whiskyId);
+
+  /**
+   * ウイスキー名でウイスキー情報の検索を行います。
+   * @param name ウイスキー名
+   * @return ウイスキー名に紐づくウイスキー情報
+   */
+  Optional<Whisky> searchWhiskyByName(String name);
 
   /**
    * 評価情報の平均検索を行います。
