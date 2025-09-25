@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * ウイスキーの検索や登録、更新などをREST APIとして実行されるcontrollerです。
 **/
-@CrossOrigin(origins = "http://localhost:3000")//異なるドメインからのリクエストを許可するアノテーション
+@CrossOrigin(origins = "*")
 @Validated
 @RestController
 public class WhiskyController {
