@@ -24,8 +24,8 @@
 - *TypeScript*
 - *Next.js*
 - *React*
-[フロントエンドリポジトリはこちら](https://github.com/Kokui0530/WhiskyQuest_Front.git)
 
+  
 ## 機能一覧
 ・ユーザー登録・更新・削除（論理削除）
 ・ウイスキー登録・更新・削除（論理削除）
@@ -54,9 +54,9 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 | Put   | /deleteRating/{userId}/{ratingId}   | 評価情報削除（論理削除）   |
 
 
-
 ## ER図
-![IMG_0875](https://github.com/user-attachments/assets/adde8832-6cbc-4478-a3ea-2103066f55e4)
+
+![IMG_0875](https://github.com/user-attachments/assets/0681a98d-c4ef-4aed-9361-93404f8abb8e)
 
 ## インフラ構成図
 
