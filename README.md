@@ -1,4 +1,3 @@
-
 ## WhisukiQuest-お気に入り１本を探しに-
 
 ## はじめに
@@ -30,6 +29,12 @@
   
 ## 機能一覧
 -ユーザー登録・更新・削除（論理削除）  
+![ユーザー_新規登録_V1](https://github.com/user-attachments/assets/c7cf33fa-8f85-4baf-87f4-59563e1c69ef)
+![ユーザー更新](https://github.com/user-attachments/assets/8738a144-2454-4765-bcdb-16bb87dffbb8)
+![ユーザー削除](https://github.com/user-attachments/assets/b4e8443f-d84e-47d5-b2c8-12e3bb2629ba)
+
+
+
 -ウイスキー登録・更新・削除（論理削除）  
 -評価登録・更新・削除（論理削除）  
 
