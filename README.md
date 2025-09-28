@@ -22,21 +22,35 @@
 - **JUnit / Spring Boot Test**
 
 ### フロントエンド
-- *TypeScript*
-- *Next.js*
-- *React*
-
+- **TypeScript**
+- **Next.js**
+- **React**
+（フロントに関してはAIを活用して効率的に開発を推進）
   
 ## 機能一覧
--ユーザー登録・更新・削除（論理削除）  
+### ユーザー登録 
 ![ユーザー_新規登録_V1](https://github.com/user-attachments/assets/c7cf33fa-8f85-4baf-87f4-59563e1c69ef)
+
+### ユーザー更新
 ![ユーザー更新](https://github.com/user-attachments/assets/8738a144-2454-4765-bcdb-16bb87dffbb8)
+
+### ユーザー削除
 ![ユーザー削除](https://github.com/user-attachments/assets/b4e8443f-d84e-47d5-b2c8-12e3bb2629ba)
 
+### ウイスキー・評価登録
+![ウイスキー新規登録](https://github.com/user-attachments/assets/60383c42-770c-4303-b345-7a369559cc92)
 
+### ウイスキー・評価更新
+![ウイスキー更新](https://github.com/user-attachments/assets/62e13495-8eea-453d-b43d-8b691f91cff9)
 
--ウイスキー登録・更新・削除（論理削除）  
--評価登録・更新・削除（論理削除）  
+### ウイスキー・評価削除
+![ウイスキー削除](https://github.com/user-attachments/assets/4c345c4e-daa6-4d2b-a901-d99ab823fa27)
+
+### ランキング機能
+![ランキング機能](https://github.com/user-attachments/assets/818aa7b0-b63f-4a97-bce0-7a6ad9f73486)
+
+### ID検索機能
+![ID検索](https://github.com/user-attachments/assets/8f6c7fb8-3c42-4668-a246-d04460c8a640)
 
 ## APIエンドポイント一覧
 API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝EC2で公開しなと無理
@@ -65,9 +79,6 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 
 ![IMG_0875](https://github.com/user-attachments/assets/0681a98d-c4ef-4aed-9361-93404f8abb8e)
 
-## インフラ構成図
-
-
 ## テスト結果
 
 
@@ -85,7 +96,6 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 ランキング機能の実装にあたり、SQLとJava（Converter）の処理を適切に分担するよう工夫しました。
 データベース内で完結できる処理はDB側に任せることで、通信コストやメモリ消費を抑えられることを学び、
 また、MyBatisを用いてCRUD処理だけでなく集計や並び替えなどのSQLも積極的に学習・実装し、より効率的な仕組みを構築しました。
-
 
 
 ## 今後の開発計画
@@ -108,8 +118,8 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 制作時間　180時間
 
 ## リンク
-デプロイ版：  
-フロントエンドリポジトリ：  
+デプロイ版：  ※実装中
+フロントエンドリポジトリ：https://github.com/Kokui0530/WhiskyQuest_Front.git  
 API仕様書：  
 
 ## おわりに
