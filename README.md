@@ -1,4 +1,5 @@
-<img width="1887" height="818" alt="スクリーンショット 2025-09-28 223241" src="https://github.com/user-attachments/assets/3f0029d7-dac0-41fd-bbfa-308a67c84d0d" />
+![ユーザー新規登録](https://github.com/user-attachments/assets/7958dca5-e75a-43e5-bdb7-7cef9bad4bcb)
+
 
 
 ## WhisukiQuest-お気に入り１本を探しに-
