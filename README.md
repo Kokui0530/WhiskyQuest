@@ -1,7 +1,3 @@
-![ユーザー新規登録](https://github.com/user-attachments/assets/7958dca5-e75a-43e5-bdb7-7cef9bad4bcb)
-
-
-
 ## WhisukiQuest-お気に入り１本を探しに-
 
 ## はじめに
@@ -33,28 +29,29 @@
   
 ## 機能一覧
 ### ユーザー登録 
-![ユーザー_新規登録_V1](https://github.com/user-attachments/assets/c7cf33fa-8f85-4baf-87f4-59563e1c69ef)
+![ユーザー新規登録](https://github.com/user-attachments/assets/5324cef5-345e-4d3b-bd66-f7b971d8bc3e)
 
 ### ユーザー更新
-![ユーザー更新](https://github.com/user-attachments/assets/8738a144-2454-4765-bcdb-16bb87dffbb8)
+![ユーザー更新](https://github.com/user-attachments/assets/d3f0560d-ea65-4e45-9928-adf9cd9afeab)
 
 ### ユーザー削除
-![ユーザー削除](https://github.com/user-attachments/assets/b4e8443f-d84e-47d5-b2c8-12e3bb2629ba)
+![ユーザー削除](https://github.com/user-attachments/assets/6ed05f65-9f35-406e-9ffc-07e5fc7ef711)
 
 ### ウイスキー・評価登録
-![ウイスキー新規登録](https://github.com/user-attachments/assets/60383c42-770c-4303-b345-7a369559cc92)
+![ウイスキー登録](https://github.com/user-attachments/assets/9f9b04f9-ff95-4f11-a38e-f9834d232f9b)
 
 ### ウイスキー・評価更新
-![ウイスキー更新](https://github.com/user-attachments/assets/62e13495-8eea-453d-b43d-8b691f91cff9)
+![ウイスキー更新](https://github.com/user-attachments/assets/893da44c-6eda-4944-b705-ba52721854d9)
 
 ### ウイスキー・評価削除
-![ウイスキー削除](https://github.com/user-attachments/assets/4c345c4e-daa6-4d2b-a901-d99ab823fa27)
+![ウイスキー削除](https://github.com/user-attachments/assets/59fa8a94-bdc0-4261-a06c-3fef37a6c389)
 
 ### ランキング機能
-![ランキング機能](https://github.com/user-attachments/assets/818aa7b0-b63f-4a97-bce0-7a6ad9f73486)
+![ランキング機能](https://github.com/user-attachments/assets/9fbc4553-26b2-478f-8bec-af8cf0205708)
 
 ### ID検索機能
-![ID検索](https://github.com/user-attachments/assets/8f6c7fb8-3c42-4668-a246-d04460c8a640)
+![ID検索](https://github.com/user-attachments/assets/25c2a137-c40b-4c28-8331-04152a8a3231)
+
 
 ## APIエンドポイント一覧
 API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝EC2で公開しなと無理
@@ -84,6 +81,7 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 ![IMG_0875](https://github.com/user-attachments/assets/0681a98d-c4ef-4aed-9361-93404f8abb8e)
 
 ## テスト結果
+<img width="1890" height="788" alt="スクリーンショット 2025-09-28 232917" src="https://github.com/user-attachments/assets/bcc3f2c9-dbeb-475b-92c4-bd664762c33e" />
 
 
 ## 大変だったこと、学んだ事
