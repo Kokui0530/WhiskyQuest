@@ -32,6 +32,7 @@ public class WhiskyService {
     this.converter = converter;
   }
 
+
   /****
    *ユーザー詳細検索です。ユーザー情報、ユーザーIDに紐づくウイスキー情報、評価情報を取得します。
    * @param userId ユーザーID
@@ -77,12 +78,31 @@ public class WhiskyService {
 
   /***
    * ウイスキー名でウイスキー情報を検索し、重複がないかチェックします。
-   * @param name ウイスキー名
+   * @param whiskyInfo ウイスキー情報と評価情報
    * @return ウイスキー情報
    */
-  public Optional<Whisky> checkByWhiskyName(String name){
-    return repository.searchWhiskyByName(name);
+  public WhiskyInfo checkByWhiskyName(WhiskyInfo whiskyInfo){
+    String name = whiskyInfo.getWhisky().getName();
+    Optional<Whisky> checkWhisky = repository.searchWhiskyByName(name);
+    //ウイスキー名に重複がないかチェック
+
+    Rating rating = whiskyInfo.getRating();
+    Whisky whisky;
+    if (checkWhisky.isPresent()) {
+      whisky = checkWhisky.get(); // 既存のウイスキーを使う
+    } else {
+      repository.registerWhisky(whiskyInfo.getWhisky()); // 新規登録
+      Optional<Whisky> searchWhisky = repository.searchWhiskyByName(name);
+      whisky = searchWhisky.get();
+    }
+
+
+    rating.setWhiskyId(whisky.getId());
+    rating.setUserId(whiskyInfo.getRating().getUserId());
+    repository.registerRating(rating); //  評価を保存
+    return new WhiskyInfo();
   }
+
 
   /****
    * ユーザー情報の登録を行います。
