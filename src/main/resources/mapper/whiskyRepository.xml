@@ -52,25 +52,25 @@
 
   <!--ユーザー情報の新規登録-->
   <insert id="registerUser" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO Users(user_name,mail,password)
+    INSERT INTO users(user_name,mail,password)
     VALUES(#{userName} , #{mail} , #{password})
   </insert>
 
   <!--ウイスキー情報の新規登録-->
   <insert id="registerWhisky" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO Whisky(user_id , name , taste , drinking_style , price , is_deleted)
+    INSERT INTO whisky(user_id , name , taste , drinking_style , price , is_deleted)
     VALUES(#{userId} , #{name} , #{taste} , #{drinkingStyle} , #{price} , false)
   </insert>
 
   <!--評価情報の新規登録-->
   <insert id="registerRating" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO Rating(user_id , whisky_id , rating , comment)
+    INSERT INTO rating(user_id , whisky_id , rating , comment)
     VALUES(#{userId} , #{whiskyId} , #{rating} , #{comment})
   </insert>
 
   <!--ユーザー情報の更新-->
   <update id="updateUser">
-    UPDATE Users SET user_name = #{userName} , mail = #{mail} , password = #{password}
+    UPDATE users SET user_name = #{userName} , mail = #{mail} , password = #{password}
     WHERE id = #{id}
   </update>
 
