@@ -122,7 +122,7 @@
 制作時間　180時間
 
 ## リンク
-デプロイ版：  http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/
+デプロイ版：  http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/  
 フロントエンドリポジトリ：https://github.com/Kokui0530/WhiskyQuest_Front.git  
 API仕様書：  
 
