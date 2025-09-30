@@ -24,9 +24,12 @@
 ### フロントエンド
 - **TypeScript**
 - **Next.js**
-- **React**
+- **React**  
 （フロントに関してはAIを活用して効率的に開発を推進）
-  
+
+## WhiskyQuest 公開URL
+[WhiskyQuestを使ってみる](http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/)
+
 ## 機能一覧
 ### ユーザー登録 
 ![ユーザー新規登録](https://github.com/user-attachments/assets/5324cef5-345e-4d3b-bd66-f7b971d8bc3e)
@@ -120,7 +123,7 @@ API仕様書はこちら・URL｛http://localhost:8080/swagger-ui/index.html｝E
 制作時間　180時間
 
 ## リンク
-デプロイ版：  ※実装中
+デプロイ版：  http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/
 フロントエンドリポジトリ：https://github.com/Kokui0530/WhiskyQuest_Front.git  
 API仕様書：  
 
