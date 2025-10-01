@@ -10,21 +10,23 @@
 
 ## 使用技術
 ### バックエンド
-- **Java 17**
-- **Spring Boot**
-- **MyBatis**
+- **Java 21**
+- **Spring Boot 3.5.4**
+- **MyBatis 3.0.5**
 - **MySQL**
 - **H2 Database**
 - **Lombok**
-- **Apache Commons Lang**
+- **Apache Commons Lang 3.18.0**
 - **Spring Validation**
-- **Springdoc OpenAPI**
+- **Springdoc OpenAPI 2.8.9**
 - **JUnit / Spring Boot Test**
 
 ### フロントエンド
-- **TypeScript**
-- **Next.js**
-- **React**  
+- **TypeScript: 5.2.2**
+- **Next.js: 15.5.3**
+- **React: 19.1.0**
+- **React DOM: 19.1.0**
+- **Tailwind CSS: 4.0.1** 
 （フロントに関してはAIを活用して効率的に開発を推進）
 
 ## WhiskyQuest 公開URL
