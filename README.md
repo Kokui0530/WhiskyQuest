@@ -30,7 +30,7 @@
 （フロントに関してはAIを活用して効率的に開発を推進）
 
 ## WhiskyQuest 公開URL
-[WhiskyQuestを使ってみる](http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/)
+[WhiskyQuest](http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/)
 
 ## 機能一覧
 ### ユーザー登録 
