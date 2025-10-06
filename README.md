@@ -33,29 +33,26 @@
 [WhiskyQuest](http://whiskyquestfrontalb-2012089750.ap-northeast-1.elb.amazonaws.com/)
 
 ## 機能一覧
-### ユーザー登録 
-![ユーザー新規登録](https://github.com/user-attachments/assets/5324cef5-345e-4d3b-bd66-f7b971d8bc3e)
+### ユーザー新規登録 
+![ユーザー新規登録 (1)](https://github.com/user-attachments/assets/91b8efcf-d065-497a-af09-a3db42f0b852)
 
 ### ユーザー更新
-![ユーザー更新](https://github.com/user-attachments/assets/d3f0560d-ea65-4e45-9928-adf9cd9afeab)
+![ユーザー更新 (1)](https://github.com/user-attachments/assets/22886d62-b84c-49aa-8b1a-b3a5b1b56f1e)
 
 ### ユーザー削除
-![ユーザー削除](https://github.com/user-attachments/assets/6ed05f65-9f35-406e-9ffc-07e5fc7ef711)
+![ユーザー削除 (1)](https://github.com/user-attachments/assets/2b937f11-1662-4a8d-a49f-640436be3cba)
 
 ### ウイスキー・評価登録
-![ウイスキー登録](https://github.com/user-attachments/assets/9f9b04f9-ff95-4f11-a38e-f9834d232f9b)
+![ウイスキー登録 (1)](https://github.com/user-attachments/assets/21b9652c-8b9d-40cf-98fa-4a58e16886dc)
 
 ### ウイスキー・評価更新
-![ウイスキー更新](https://github.com/user-attachments/assets/893da44c-6eda-4944-b705-ba52721854d9)
+![ウイスキー更新 (1)](https://github.com/user-attachments/assets/7f9f9eb9-2ce2-43c9-93ac-92346d4b766a)
 
 ### ウイスキー・評価削除
-![ウイスキー削除](https://github.com/user-attachments/assets/59fa8a94-bdc0-4261-a06c-3fef37a6c389)
+![ウイスキー削除 (1)](https://github.com/user-attachments/assets/67e6100a-776c-4836-a32f-bc4f9a0d46f1)
 
 ### ランキング機能
-![ランキング機能](https://github.com/user-attachments/assets/9fbc4553-26b2-478f-8bec-af8cf0205708)
-
-### ID検索機能
-![ID検索](https://github.com/user-attachments/assets/25c2a137-c40b-4c28-8331-04152a8a3231)
+![無題のビデオ ‐ Clipchampで作成](https://github.com/user-attachments/assets/410f2d7f-982d-482d-afb9-6f0858f741a9)
 
 
 ## APIエンドポイント一覧
@@ -98,7 +95,10 @@
 フロントエンドはAIを活用して作成しましたが、アプリケーションが複雑になるにつれ、AIに対する指示の出し方も難しくなりました。
 そこで、ドキュメントを丁寧に作成することで、AIから的確な回答を得られることを体感し、ドキュメント作成の重要性も学びました。
 
--こだわった所
+### こだわった所
+手軽に簡単に登録できるように、
+新規登録後、ログイン後ともに1番最初の画面でウイスキー登録画面を表示させました。
+
 ランキング機能の実装にあたり、SQLとJava（Converter）の処理を適切に分担するよう工夫しました。
 データベース内で完結できる処理はDB側に任せることで、通信コストやメモリ消費を抑えられることを学び、
 また、MyBatisを用いてCRUD処理だけでなく集計や並び替えなどのSQLも積極的に学習・実装し、より効率的な仕組みを構築しました。
